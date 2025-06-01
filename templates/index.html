@@ -1,0 +1,36 @@
+{% extends "terminimal/templates/index.html" %}
+
+{# Favicon #}
+{% block extra_head %}
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+{% endblock %}
+
+
+{% block footer %}
+<footer class="footer">
+  <div class="footer__inner">
+    {%- if config.extra.copyright_html %}
+    <div class="copyright copyright--user">{{ config.extra.copyright_html | safe }}</div>
+    {% else %}
+    <div class="copyright-mod">
+      {%- if config.extra.author %}
+      <span>© {{ date_macros::now_year() }} {{ config.extra.author }}</span>
+      {% else %}
+      <span>© {{ date_macros::now_year() }} Powered by <a href="https://www.getzola.org/">Zola</a></span>
+      {% endif -%}
+
+      <br>
+      <span class="copyright-theme-mod">
+        <!-- <span class="copyright-theme-sep"> | </span> -->
+        Powered by <a href="https://www.getzola.org/">Zola</a>
+        and enhanced by <a href="https://github.com/pawroman/zola-theme-terminimal/">Terminimal</a>
+        | Hosted on <a href="https://pages.github.com/">Github Pages</a>
+      </span>
+    </div>
+    {% endif -%}
+  </div>
+</footer>
+{% endblock footer %}
